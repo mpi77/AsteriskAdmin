@@ -1,0 +1,648 @@
+@charset "utf-8";
+/* default overwtite html */
+* {
+	margin: 0px; padding: 0px;
+}
+
+body {
+	background: none repeat scroll 0 0 #262626; color: #252525;
+}
+
+a {
+	text-decoration: none; color: #071e6a; cursor: pointer;
+}
+
+a:hover {
+	text-decoration: none; color: #444;
+}
+
+a>img {
+	border: 0px;
+}
+
+input,select,textarea {
+	border: 1px solid #999; padding: 1px;
+}
+
+table {
+	border-collapse: collapse; width: 100%; font-size: 90%; font-family: serif;
+}
+
+table td {
+	padding: 2px 5px;
+}
+
+table th {
+	padding: 5px 3px; font-weight: bold;
+}
+
+table th a {
+	color: #fff;
+}
+
+table tr {
+	background-color: #c0c0c0;
+}
+
+table tr.marked {
+	background-color: #a2a2a2;
+}
+
+table tr.head {
+	background-color: #626262; text-align: left;
+}
+
+fieldset {
+	border: 1px solid #6f6f6f; padding: 10px;
+}
+
+fieldset>legend {
+	font-family: sans-serif; font-size: 14px; font-weight: bold; padding: 0 4px;
+}
+
+form>div>span {
+	display: block; float: left;
+}
+
+form>div>input {
+	float: left;
+}
+
+form>div {
+	clear: both;
+}
+
+/* main blocks */
+div#header {
+	height: 90px; background: url("../images/header.gif") repeat scroll 0 0 rgba(0, 0, 0, 0);
+}
+
+div#header_cont {
+	width: 1000px; margin: 0 auto;
+}
+
+div#logo {
+	width: 72px; height: 70px; float: left; background: url("../images/asterisk.png") no-repeat; margin: 10px 0 0 0;
+}
+
+div#logged_user {
+	width: 500px; float: right; height: 30px; padding: 10px 20px 6px 0; vertical-align: middle; color: #C0C0C0;
+	line-height: 30px; text-align: right;
+}
+
+div#logged_user a {
+	color: #C0C0C0; font-weight: bold;
+}
+
+div#logged_user span {
+	background: url("../images/nav-border.gif") repeat-y; padding: 0 10px 0 0; margin: 0 0 0 10px;
+}
+
+div#logged_user a:hover {
+	color: #2C69DE;
+}
+
+div#header h1 {
+	display: none;
+}
+
+div#cont {
+	background: none repeat scroll 0 0 #D3D4CE; width: 100%; padding: 0.8em 0;
+}
+
+div#navigation {
+	background: url("../images/slider-nav.gif") repeat scroll 0 0 rgba(0, 0, 0, 0); height: 67px;
+}
+
+div#menu {
+	width: 800px; float: right; padding: 0 0 0 0;
+}
+
+div#content {
+	width: 1000px; margin: -64px auto 0px;
+}
+
+div#footer {
+	background: url("../images/footer.gif") repeat scroll 0 0 rgba(0, 0, 0, 0); color: #C0C0C0; height: 72px;
+	text-align: center; padding: 20px 0 0 0; font-size: 90%;
+}
+
+div#page_name {
+	padding: 0 0 30px; height: 38px;
+}
+
+div#page_name h1 {
+	float: left; font-family: serif; font-size: 2em; font-weight: bold;
+}
+
+div#page_name a {
+	float: right; vertical-align: text-bottom; line-height: 48px; padding: 0 15px 0 0;
+}
+
+div#exception {
+	position: absolute; left: 50%; z-index: 5;
+}
+
+div#exception>div {
+	position: relative; left: -50%; top: -3px;
+}
+
+div#exception p {
+	padding: 12px;
+}
+
+.exception_hide {
+	width: 4em; text-indent: -9999px;
+}
+
+.cleaner_micro {
+	height: 0.1px; clear: both; padding: 0;
+}
+
+/* other */
+
+/* default */
+input.send_btn {
+	margin: 0px auto; float: none; display: block;
+}
+
+div.btn_row {
+	padding: 10px 0 36px 0;
+}
+
+span.req {
+	padding: 2px 10px 0 5px; color: #a60000; width: 15px;
+}
+
+.actual_page {
+	color: #a60000;
+}
+
+.count_box {
+	font-size: 80%; text-align: center; padding: 0.4em 0.1em;
+}
+
+.pagging_box {
+	font-size: 100%; text-align: center; padding: 0.3em 0.1em;
+}
+
+form span,form input,form select {
+	float: left;
+}
+
+form div {
+	padding: 0.2em 0.2em;
+}
+
+form span.value {
+	padding: 0.1em 0 0 0;
+}
+
+form .title {
+	text-align: right; padding: 2px 10px 0 0;
+}
+
+form .value {
+	
+}
+
+form .help {
+	padding: 0.1em 0 0 0; color: #5f6975; font-size: 90%;
+}
+
+form.line_edit #spinner {
+	background: #fff; color: #000; width: 170px; margin: 2px 22px 2px 6px;
+}
+
+input.ui-textfield,form.line_edit input.ui-textfield {
+	color: inherit; background: #fff; text-align: inherit; outline: none; cursor: text; padding: 0.1em 0.2em
+}
+
+input.error,form.line_edit input.error {
+	background-color: #F8DBDB;
+}
+
+/* user */
+#user_login {
+	width: 475px; margin: 0px auto;
+}
+
+form#user_login .title {
+	width: 200px;
+}
+
+form#user_login .value {
+	width: 200px;
+}
+
+.renew_link {
+	text-align: center;
+}
+
+#user_login_dev {
+	width: 300px; margin: 0 auto;
+}
+
+#user_renew {
+	margin: 0px auto;
+}
+
+form#user_renew .title {
+	width: 380px;
+}
+
+form#user_renew .value {
+	width: 200px;
+}
+
+#user_setpassword {
+	margin: 0px auto;
+}
+
+form#user_setpassword .title {
+	width: 380px;
+}
+
+form#user_setpassword .value {
+	width: 200px;
+}
+
+form#user_setpassword .help {
+	width: 200px;
+}
+
+#user_create {
+	margin: 0px auto;
+}
+
+form#user_create .title {
+	width: 380px;
+}
+
+form#user_create .value {
+	width: 200px;
+}
+
+form#user_create .help {
+	width: 200px;
+}
+
+form#user_edit .title,form#user_edit_pass .title {
+	width: 380px;
+}
+
+form#user_edit .value,form#user_edit_pass .value {
+	width: 200px;
+}
+
+form#user_edit .help,form#user_edit_pass .help {
+	width: 300px;
+}
+
+table#user_log .col_0 {
+	width: 20%;
+}
+
+table#user_log .col_1 {
+	width: 80%;
+}
+
+table#user_lst .col_0 {
+	width: 10%;
+}
+
+table#user_lst .col_1 {
+	width: 30%;
+}
+
+table#user_lst .col_2 {
+	width: 20%;
+}
+
+table#user_lst .col_3 {
+	width: 20%;
+}
+
+table#user_lst .col_4 {
+	width: 20%;
+}
+
+/* line */
+form.line_edit .title {
+	width: 200px;
+}
+
+form.line_edit .value {
+	width: 200px;
+}
+
+form.line_edit .help {
+	width: 260px;
+}
+
+#server_info .title {
+	width: 200px;
+}
+
+#server_info .value {
+	width: 200px; font-weight: bold;
+}
+
+#server_info .help {
+	width: 200px;
+}
+
+.server_info_header {
+	font-size: 1.1em; padding: 0.3em 1em;
+}
+
+form#line_delete .value {
+	width: 100%; text-align: center;
+}
+
+form#line_delete .btn_row {
+	text-align: center;
+}
+
+form#line_delete .btn_row a {
+	position: relative; top: 0.6em;
+}
+
+#line_lst .col_0 {
+	width: 10%;
+}
+
+#line_lst .col_1 {
+	width: 15%;
+}
+
+#line_lst .col_2 {
+	width: 20%;
+}
+
+#line_lst .col_3 {
+	width: 45%;
+}
+
+#line_lst .edit {
+	width: 5%;
+}
+
+#line_lst .delete {
+	width: 5%;
+}
+
+#tabs {
+	background: transparent; border: none; z-index: 1;
+}
+
+/* extension */
+form#ext_edit .title {
+	width: 380px;
+}
+
+form#ext_edit .value {
+	width: 200px;
+}
+
+form#ext_edit .help {
+	width: 280px;
+}
+
+form#ext_delete .value {
+	width: 100%; text-align: center;
+}
+
+form#ext_delete .btn_row {
+	text-align: center;
+}
+
+form#ext_delete .btn_row a {
+	position: relative; top: 0.6em;
+}
+
+table#ext_lst .col_0 {
+	width: 7%;
+}
+
+table#ext_lst .col_1 {
+	width: 10%;
+}
+
+table#ext_lst .col_2 {
+	width: 20%;
+}
+
+table#ext_lst .col_3 {
+	width: 10%;
+}
+
+table#ext_lst .col_4 {
+	width: 15%;
+}
+
+table#ext_lst .col_5 {
+	width: 30%;
+}
+
+table#ext_lst .edit {
+	width: 5%;
+}
+
+table#ext_lst .delete {
+	width: 5%;
+}
+
+table#pstn_lst .col_0 {
+	width: 10%;
+}
+
+table#pstn_lst .col_1 {
+	width: 45%;
+}
+
+table#pstn_lst .col_2 {
+	width: 30%;
+}
+
+table#pstn_lst .edit {
+	width: 5%;
+}
+
+table#pstn_lst .cancel {
+	width: 5%;
+}
+
+table#pstn_lst .delete {
+	width: 5%;
+}
+
+/* index */
+#about_info span {
+	float: left;
+}
+
+#about_info .title {
+	width: 200px; text-align: right; padding: 0 15px 0 0;
+}
+
+#about_info .value {
+	width: 150px; font-weight: bold;
+}
+
+#about_info .help {
+	width: 500px;
+}
+
+.about_info_header {
+	font-size: 1.5em; padding: 1em 0 0.3em 0;
+}
+
+/* page size */
+form#pagesize_box>div>input[type=submit] {
+	float: left; margin: 0 0 0 10px;
+}
+
+form#pagesize_box>div>span {
+	width: 200px; text-align: right; padding: 2px 10px 0 0;
+}
+
+/* cdr */
+form#cdr_line input.send_btn {
+	float: left; margin: 0 0 0 10px;
+}
+
+form#cdr_line .title {
+	width: 200px;
+}
+
+#cdr_lst .col_0 {
+	width: 20%;
+}
+
+#cdr_lst .col_1 {
+	width: 10%;
+}
+
+#cdr_lst .col_2 {
+	width: 15%;
+}
+
+#cdr_lst .col_3 {
+	width: 15%;
+}
+
+#cdr_lst .col_4 {
+	width: 10%;
+}
+
+#cdr_lst .col_5 {
+	width: 10%;
+}
+
+#cdr_lst .col_6 {
+	width: 20%;
+}
+
+/* voicemail */
+form#voicemail_line input.send_btn {
+	float: left; margin: 0 0 0 10px;
+}
+
+form#voicemail_line .title {
+	width: 200px;
+}
+
+#voicemail_lst .col_0 {
+	width: 10%;
+}
+
+#voicemail_lst .col_1 {
+	width: 35%;
+}
+
+#voicemail_lst .col_2 {
+	width: 35%;
+}
+
+#voicemail_lst .col_3 {
+	width: 10%;
+}
+
+#voicemail_lst .col_4 {
+	width: 5%;
+}
+
+#voicemail_lst .col_5 {
+	width: 5%;
+}
+
+/* phonebook */
+#phonebook_lst .col_0 {
+	width: 15%;
+}
+
+#phonebook_lst .col_1 {
+	width: 30%;
+}
+
+#phonebook_lst .col_2 {
+	width: 20%;
+}
+
+#phonebook_lst .col_3 {
+	width: 35%;
+}
+
+/* menu */
+.ui-tabs-panel {
+	color: #000;
+}
+
+.ui-menu {
+	z-index: 2;
+}
+
+.ui-menu {
+	overflow: hidden;
+}
+
+.ui-menu .ui-menu {
+	overflow: visible !important;
+}
+
+.ui-menu>li {
+	float: left; display: block; width: auto !important;
+}
+
+.ui-menu ul li {
+	display: block; float: none;
+}
+
+.ui-menu ul li ul {
+	left: 120px !important; width: 100%;
+}
+
+.ui-menu ul li ul li {
+	width: auto;
+}
+
+.ui-menu ul li ul li a {
+	float: left;
+}
+
+.ui-menu>li {
+	margin: 5px 5px !important; padding: 0 0 !important;
+}
+
+.ui-menu>li>a {
+	float: left; display: block; clear: both; overflow: hidden;
+}
+
+.ui-menu .ui-menu-icon {
+	margin-top: 0.3em !important;
+}
+
+.ui-menu .ui-menu .ui-menu li {
+	float: left; display: block;
+}
