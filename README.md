@@ -8,7 +8,7 @@ Requirements
 
 - Asterisk PBX with realtime configuration
 - database server (it is written for MySQL, recommended MySQL 5.6 and above)
-- webserver with PHP support (recommended Apache and PHP 5.4 and above)
+- web server with PHP support (recommended Apache 2.2 and above and PHP 5.4 and above)
 
 Install
 ============
