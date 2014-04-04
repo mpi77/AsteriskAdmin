@@ -1,0 +1,63 @@
+ErrorDocument 400 /asterisk_admin/error/error.php?code=400
+ErrorDocument 401 /asterisk_admin/error/error.php?code=401
+ErrorDocument 403 /asterisk_admin/error/error.php?code=403
+ErrorDocument 404 /asterisk_admin/error/error.php?code=404
+ErrorDocument 405 /asterisk_admin/error/error.php?code=405
+ErrorDocument 408 /asterisk_admin/error/error.php?code=408
+ErrorDocument 500 /asterisk_admin/error/error.php?code=500
+ErrorDocument 501 /asterisk_admin/error/error.php?code=501
+ErrorDocument 502 /asterisk_admin/error/error.php?code=502
+ErrorDocument 503 /asterisk_admin/error/error.php?code=503
+ErrorDocument 504 /asterisk_admin/error/error.php?code=504
+ErrorDocument 505 /asterisk_admin/error/error.php?code=505
+
+<IfModule mod_rewrite.c>
+RewriteEngine on
+RewriteBase /
+
+#redirect spam bots
+RewriteCond %{HTTP_USER_AGENT} Wget [OR]
+RewriteCond %{HTTP_USER_AGENT} CherryPickerSE [OR]
+RewriteCond %{HTTP_USER_AGENT} CherryPickerElite [OR]
+RewriteCond %{HTTP_USER_AGENT} EmailCollector [OR]
+RewriteCond %{HTTP_USER_AGENT} EmailSiphon [OR]
+RewriteCond %{HTTP_USER_AGENT} EmailWolf [OR]
+RewriteCond %{HTTP_USER_AGENT} ExtractorPro
+RewriteRule ^.*$ http://www.spampoison.com/ [L]
+
+#disable view (txt, log) files
+<filesmatch "\.(txt|log)$">
+order allow,deny
+deny from all
+</filesmatch>
+
+#do not redirect existing file or dir
+RewriteCond %{REQUEST_FILENAME} -d [OR]
+RewriteCond %{REQUEST_FILENAME} -f
+RewriteRule .* - [L]
+
+#redirect error
+RewriteCond %{REQUEST_URI} ^/asterisk_admin/([0-9]+)$
+RewriteRule ^([0-9]+)$ /asterisk_admin/error/error.php?code=$1 [NC,L]
+
+# redirect /route/action/
+RewriteCond %{REQUEST_URI} ^/asterisk_admin/([a-z]+)/([a-z]+)/$
+RewriteRule ^([a-z]+)/([a-z]+)/$ /asterisk_admin/index.php?route=$1&action=$2 [L,QSA]
+
+# redirect /route/action/integer_id/
+RewriteCond %{REQUEST_URI} ^/asterisk_admin/([a-z]+)/([a-z]+)/([0-9]+)/$
+RewriteRule ^([a-z]+)/([a-z]+)/([0-9]+)/$ /asterisk_admin/index.php?route=$1&action=$2&id=$3 [L,QSA]
+
+# redirect /route/action/-int_page-int_column-char_direction
+RewriteCond %{REQUEST_URI} ^/asterisk_admin/([a-z]+)/([a-z]+)/\-([0-9]{1,3})\-([0-9]{1,2})\-(A|D)$
+RewriteRule ^([a-z]+)/([a-z]+)/\-([0-9]{1,3})\-([0-9]{1,2})\-(A|D)$ /asterisk_admin/index.php?route=$1&action=$2&page=$3&column=$4&direction=$5 [L,QSA]
+
+# redirect /route/action/string_32chars/
+RewriteCond %{REQUEST_URI} ^/asterisk_admin/([a-z]+)/([a-z]+)/([a-zA-Z0-9]{32})/$
+RewriteRule ^([a-z]+)/([a-z]+)/([a-zA-Z0-9]{32})/$ /asterisk_admin/index.php?route=$1&action=$2&token=$3 [L,QSA]
+
+# redirect /route/action/int/-int_page-int_column-char_direction
+RewriteCond %{REQUEST_URI} ^/asterisk_admin/([a-z]+)/([a-z]+)/([0-9]+)/\-([0-9]{1,3})\-([0-9]{1,2})\-(A|D)$
+RewriteRule ^([a-z]+)/([a-z]+)/([0-9]+)/\-([0-9]{1,3})\-([0-9]{1,2})\-(A|D)$ /asterisk_admin/index.php?route=$1&action=$2&id=$3&page=$4&column=$5&direction=$6 [L,QSA]
+
+</IfModule>
