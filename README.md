@@ -6,13 +6,15 @@ Web based application to manage Asterisk PBX. It is designed for small office or
 
 - Asterisk PBX with realtime configuration
 - database server (it is written for MySQL, recommended MySQL 5.6 and above)
-- web server with PHP support (recommended Apache 2.2 and above and PHP 5.4 and above)
+- Apache web server with mod_rewrite (recommended Apache 2.2 and above)
+- PHP 5.4 and above
 
 ## Install ##
 
 - create database from scripts in ./sql directory
 - copy all files to webroot directory
 - modify ./app/Config.class.php to your values
+- modify constant ASTERISK_VOICEMAIL_PATH in ./app/controller/VoicemailController.class.php
 
 ## License ##
 
