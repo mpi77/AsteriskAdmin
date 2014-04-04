@@ -88,6 +88,7 @@
 <?php if($_GET["action"] == "lst"){?>
 <div id="page_name">
 	<h1><?php Translate::display(Translator::PAGE_NAME_USER_LIST);?></h1>
+	<a href="user/addrequest/"><?php Translate::display(Translator::PAGE_NAME_USER_REQUEST);?></a>
 </div>
 <div><?php echo $out;?></div>
 <?php }?>
@@ -100,6 +101,7 @@
 ?>
 <div id="page_name">
 	<h1><?php Translate::display(Translator::PAGE_NAME_USER_REQUEST);?></h1>
+	<a href="user/lst/"><?php Translate::display(Translator::PAGE_NAME_USER_LIST);?></a>
 </div>
 <div>
 	<form id="user_edit" action="<?php echo $form_action;?>" method="post" enctype="application/x-www-form-urlencoded">
