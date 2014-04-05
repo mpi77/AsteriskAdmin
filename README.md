@@ -15,6 +15,7 @@ Web based application to manage Asterisk PBX. It is designed for small office or
 - copy all files to webroot directory
 - modify ./app/Config.class.php to your values
 - modify constant ASTERISK_VOICEMAIL_PATH in ./app/controller/VoicemailController.class.php
+- modify constant SIP_REALM in ./app/controller/LineController.class.php
 
 ## License ##
 
