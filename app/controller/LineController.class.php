@@ -21,7 +21,7 @@ class LineController extends Controller{
 			"external_phone" => "/^(\+[0-9]{3})?([0-9]{9})$/i",
 			"pstn_number_id" => "/^[0-9]{1,11}$/i"
 	);
-	const SIP_REALM = "sip.sd2.cz";
+	const SIP_REALM = "sip.yourserver.com";
 	const SIP_CONTEXT_INCOMING = "incoming";
 	const SIP_CONTEXT_INTERNAL = "internal";
 	const SIP_CONTEXT_OUTGOING = "outgoing";
