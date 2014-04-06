@@ -49,6 +49,7 @@
 		</div>
 		<div class="cleaner_micro">&nbsp;</div>
 		<div class="btn_row">
+			<?php System::printAuthInput();?>
 			<input type="submit" value="<?php Translate::display(Translator::BTN_SAVE);?>" class="send_btn">
 			<div class="cleaner_micro">&nbsp;</div>
 		</div>
@@ -74,6 +75,7 @@
 			<div class="cleaner_micro">&nbsp;</div>
 		</div>
 		<div class="btn_row">
+			<?php System::printAuthInput();?>
 			<input type="hidden" name="confirm_delete" value="yes" />
 			<input type="submit" value="<?php Translate::display(Translator::BTN_DELETE);?>" class="send_btn" />
 			<a href="extension/lst/"><?php Translate::display(Translator::BTN_BACK);?></a>
@@ -126,6 +128,7 @@
 		</div>
 		<div class="cleaner_micro">&nbsp;</div>
 		<div class="btn_row">
+			<?php System::printAuthInput();?>
 			<input type="submit" value="<?php Translate::display(Translator::BTN_SAVE);?>" class="send_btn">
 			<div class="cleaner_micro">&nbsp;</div>
 		</div>
@@ -151,6 +154,7 @@
 			<div class="cleaner_micro">&nbsp;</div>
 		</div>
 		<div class="btn_row">
+			<?php System::printAuthInput();?>
 			<input type="hidden" name="confirm_delete" value="yes" />
 			<input type="submit" value="<?php Translate::display(Translator::BTN_DELETE);?>" class="send_btn" />
 			<a href="extension/pstnlst/"><?php Translate::display(Translator::BTN_BACK);?></a>

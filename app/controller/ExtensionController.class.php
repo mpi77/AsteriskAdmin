@@ -2,7 +2,7 @@
 /**
  * Extension controller.
  *
- * @version 1.17
+ * @version 1.18
  * @author MPI
  * */
 class ExtensionController extends Controller{
@@ -75,6 +75,10 @@ class ExtensionController extends Controller{
 		}
 	
 		if($_SERVER["REQUEST_METHOD"] == "POST"){
+			if(System::isCsrfAttack($args["POST"]["auth_token"]) === true){
+				throw new NoticeException(NoticeException::NOTICE_PERMISSION_DENIED);
+			}
+			System::updateAuthToken();
 			if(preg_match(self::getRegexp("context"), $args["POST"]["ext_context"]) === 1 && preg_match(self::getRegexp("line"), $args["POST"]["ext_line"]) === 1 && preg_match(self::getRegexp("priority"), $args["POST"]["ext_priority"]) === 1 && preg_match(self::getRegexp("app"), $args["POST"]["ext_app"]) === 1 && preg_match(self::getRegexp("appdata"), $args["POST"]["ext_appdata"]) === 1){
 				// create extension
 				$r = $this->getModel()->createExtension($_SESSION["user"]["uid"], $args["POST"]["ext_context"], $args["POST"]["ext_line"], $args["POST"]["ext_priority"], $args["POST"]["ext_app"], $args["POST"]["ext_appdata"]);
@@ -112,6 +116,10 @@ class ExtensionController extends Controller{
 		}
 		
 		if($_SERVER["REQUEST_METHOD"] == "POST"){
+			if(System::isCsrfAttack($args["POST"]["auth_token"]) === true){
+				throw new NoticeException(NoticeException::NOTICE_PERMISSION_DENIED);
+			}
+			System::updateAuthToken();
 			if(preg_match(self::getRegexp("context"), $args["POST"]["ext_context"]) === 1 && preg_match(self::getRegexp("line"), $args["POST"]["ext_line"]) === 1 && preg_match(self::getRegexp("priority"), $args["POST"]["ext_priority"]) === 1 && preg_match(self::getRegexp("app"), $args["POST"]["ext_app"]) === 1 && preg_match(self::getRegexp("appdata"), $args["POST"]["ext_appdata"]) === 1){
 				$r = $this->getModel()->saveExtension($_SESSION["user"]["uid"], $args["GET"]["id"],$args["POST"]["ext_context"], $args["POST"]["ext_line"], $args["POST"]["ext_priority"], $args["POST"]["ext_app"], $args["POST"]["ext_appdata"]);
 				if($r === true){
@@ -147,6 +155,10 @@ class ExtensionController extends Controller{
 		}
 		
 		if($_SERVER["REQUEST_METHOD"] == "POST"){
+			if(System::isCsrfAttack($args["POST"]["auth_token"]) === true){
+				throw new NoticeException(NoticeException::NOTICE_PERMISSION_DENIED);
+			}
+			System::updateAuthToken();
 			if(array_key_exists("confirm_delete", $args["POST"]) && preg_match(self::getRegexp("confirm_delete"), $args["POST"]["confirm_delete"]) === 1){
 				$r = $this->getModel()->remove($_SESSION["user"]["uid"], $args["GET"]["id"]);
 				if($r === true){
@@ -197,6 +209,10 @@ class ExtensionController extends Controller{
 		}
 	
 		if($_SERVER["REQUEST_METHOD"] == "POST"){
+			if(System::isCsrfAttack($args["POST"]["auth_token"]) === true){
+				throw new NoticeException(NoticeException::NOTICE_PERMISSION_DENIED);
+			}
+			System::updateAuthToken();
 			if(preg_match(self::getRegexp("pstn_number"), $args["POST"]["pstn_number"]) === 1){
 				// create pstn extension
 				$pstn_number = (preg_match("/^([0-9]{9})$/i", $args["POST"]["pstn_number"]) === 1) ? "00420" . $args["POST"]["pstn_number"] : $args["POST"]["pstn_number"];
@@ -267,6 +283,10 @@ class ExtensionController extends Controller{
 		}
 	
 		if($_SERVER["REQUEST_METHOD"] == "POST"){
+			if(System::isCsrfAttack($args["POST"]["auth_token"]) === true){
+				throw new NoticeException(NoticeException::NOTICE_PERMISSION_DENIED);
+			}
+			System::updateAuthToken();
 			if(array_key_exists("confirm_delete", $args["POST"]) && preg_match(self::getRegexp("confirm_delete"), $args["POST"]["confirm_delete"]) === 1){
 				$r = $this->getModel()->removePstn($_SESSION["user"]["uid"], substr($ext[2], 1));
 				if($r === true){

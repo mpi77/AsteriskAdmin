@@ -3,7 +3,7 @@
 /**
  * System class provides some "tool" functions.
  *
- * @version 1.17
+ * @version 1.18
  * @author MPI
  * */
 class System{
@@ -388,12 +388,49 @@ class System{
 			$_SESSION["user"]["type"] = null;
 			$_SESSION["user"]["lang"] = Translator::LANG_CZ;
 			$_SESSION["user"]["auth"] = false;
+			self::initAuthToken();
 		}
 		if(!isset($_SESSION["page_size"])){
 			$_SESSION["page_size"] = self::PAGE_SIZE_DEFAULT;
 		}
 		$_SESSION["exception"] = null;
 		$_SESSION["view"] = true;
+	}
+	
+	/**
+	 * Initialize auth_token in session.
+	 */
+	public static function initAuthToken(){
+		$_SESSION["user"]["auth_token"] = self::generateRandomCode(32);
+		$_SESSION["user"]["auth_cnt"] = 1;
+	}
+	
+	/**
+	 * Update aut_token and auth_counter.
+	 */
+	public static function updateAuthToken(){
+		if($_SESSION["user"]["auth_cnt"] >= 1){
+			self::initAuthToken();
+		}else{
+			++$_SESSION["user"]["auth_cnt"];
+		}
+	}
+	
+	/**
+	 * Detection of csrf attack.
+	 * 
+	 * @param string $auth_token
+	 * @return boolean
+	 */
+	public static function isCsrfAttack($auth_token){
+		return (isset($_SESSION["user"]["auth_token"]) && $auth_token != $_SESSION["user"]["auth_token"]);
+	}
+	
+	/**
+	 * Print auth_token hidden input.
+	 */
+	public static function printAuthInput(){
+		echo sprintf("<input type=\"hidden\" name=\"auth_token\" value=\"%s\">", htmlspecialchars($_SESSION["user"]["auth_token"]));
 	}
 
 	/**

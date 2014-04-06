@@ -46,6 +46,7 @@
 			<div class="cleaner_micro">&nbsp;</div>
 		</div>
 		<div class="btn_row">
+			<?php System::printAuthInput();?>
 			<input type="submit" value="<?php Translate::display(Translator::BTN_SAVE);?>" class="send_btn">
 			<div class="cleaner_micro">&nbsp;</div>
 		</div>
@@ -67,6 +68,7 @@
 			<div class="cleaner_micro">&nbsp;</div>
 		</div>
 		<div class="btn_row">
+			<?php System::printAuthInput();?>
 			<input type="submit" value="<?php Translate::display(Translator::BTN_SAVE);?>" class="send_btn">
 			<div class="cleaner_micro">&nbsp;</div>
 		</div>
@@ -116,6 +118,7 @@
 			<div class="cleaner_micro">&nbsp;</div>
 		</div>
 		<div class="btn_row">
+			<?php System::printAuthInput();?>
 			<input type="submit" value="<?php Translate::display(Translator::BTN_SAVE);?>" class="send_btn">
 			<div class="cleaner_micro">&nbsp;</div>
 		</div>

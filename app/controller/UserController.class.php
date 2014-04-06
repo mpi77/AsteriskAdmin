@@ -2,7 +2,7 @@
 /**
  * User controller.
  *
- * @version 1.19
+ * @version 1.20
  * @author MPI
  * */
 class UserController extends Controller{
@@ -135,6 +135,10 @@ class UserController extends Controller{
 		}
 		
 		if($_SERVER["REQUEST_METHOD"] == "POST"){
+			if(System::isCsrfAttack($args["POST"]["auth_token"]) === true){
+				throw new NoticeException(NoticeException::NOTICE_PERMISSION_DENIED);
+			}
+			System::updateAuthToken();
 			if(array_key_exists("password_1", $args["POST"]) && array_key_exists("password_2", $args["POST"]) && array_key_exists("password_old", $args["POST"])){
 				// save new password
 				if(!empty($args["POST"]["password_1"]) && !empty($args["POST"]["password_2"]) && !empty($args["POST"]["password_old"]) && $args["POST"]["password_1"] == $args["POST"]["password_2"] && preg_match(self::getRegexp("password"), $args["POST"]["password_1"]) === 1 && preg_match(self::getRegexp("password"), $args["POST"]["password_old"]) === 1){
@@ -256,6 +260,10 @@ class UserController extends Controller{
 				throw new NoticeException(NoticeException::NOTICE_PERMISSION_DENIED);
 			}
 			
+			if(System::isCsrfAttack($args["POST"]["auth_token"]) === true){
+				throw new NoticeException(NoticeException::NOTICE_PERMISSION_DENIED);
+			}
+			System::updateAuthToken();
 			if(preg_match(self::getRegexp("email"), $email) === 1 && self::isValidAccountType(intval($account_type))){
 				$r = $this->getModel()->createUcr($_SESSION["user"]["uid"], $email, $account_type);
 				if($r === true){

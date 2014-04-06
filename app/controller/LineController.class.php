@@ -2,7 +2,7 @@
 /**
  * Line controller.
  *
- * @version 1.14
+ * @version 1.15
  * @author MPI
  * */
 class LineController extends Controller{
@@ -21,7 +21,7 @@ class LineController extends Controller{
 			"external_phone" => "/^(\+[0-9]{3})?([0-9]{9})$/i",
 			"pstn_number_id" => "/^[0-9]{1,11}$/i"
 	);
-	const SIP_REALM = "sip.yourserver.com";
+	const SIP_REALM = "sip.sd2.cz";
 	const SIP_CONTEXT_INCOMING = "incoming";
 	const SIP_CONTEXT_INTERNAL = "internal";
 	const SIP_CONTEXT_OUTGOING = "outgoing";
@@ -70,6 +70,10 @@ class LineController extends Controller{
 		}
 		
 		if($_SERVER["REQUEST_METHOD"] == "POST"){
+			if(System::isCsrfAttack($args["POST"]["auth_token"]) === true){
+				throw new NoticeException(NoticeException::NOTICE_PERMISSION_DENIED);
+			}
+			System::updateAuthToken();
 			if(array_key_exists("line_secret_1", $args["POST"]) && array_key_exists("line_secret_1", $args["POST"])){
 				// save new secret
 				if(!empty($args["POST"]["line_secret_1"]) && !empty($args["POST"]["line_secret_2"]) && $args["POST"]["line_secret_1"] == $args["POST"]["line_secret_2"] && preg_match(self::getRegexp("secret"), $args["POST"]["line_secret_1"]) === 1){
@@ -226,6 +230,10 @@ class LineController extends Controller{
 		}
 		
 		if($_SERVER["REQUEST_METHOD"] == "POST"){
+			if(System::isCsrfAttack($args["POST"]["auth_token"]) === true){
+				throw new NoticeException(NoticeException::NOTICE_PERMISSION_DENIED);
+			}
+			System::updateAuthToken();
 			if(array_key_exists("line_number", $args["POST"]) && array_key_exists("line_name", $args["POST"]) && array_key_exists("line_secret_1", $args["POST"]) && array_key_exists("line_secret_2", $args["POST"])){
 				// validate input
 				if(preg_match(self::getRegexp("linenumber"), $args["POST"]["line_number"]) === 1 && preg_match(self::getRegexp("name"), $args["POST"]["line_name"]) === 1 && preg_match(self::getRegexp("secret"), $args["POST"]["line_secret_1"]) === 1 && preg_match(self::getRegexp("secret"), $args["POST"]["line_secret_2"]) === 1 && $args["POST"]["line_secret_1"] == $args["POST"]["line_secret_2"]){
@@ -269,6 +277,10 @@ class LineController extends Controller{
 		}
 		
 		if($_SERVER["REQUEST_METHOD"] == "POST"){
+			if(System::isCsrfAttack($args["POST"]["auth_token"]) === true){
+				throw new NoticeException(NoticeException::NOTICE_PERMISSION_DENIED);
+			}
+			System::updateAuthToken();
 			if(array_key_exists("confirm_delete", $args["POST"]) && preg_match(self::getRegexp("confirm_delete"), $args["POST"]["confirm_delete"]) === 1){
 				$r = $this->getModel()->removeLine($_SESSION["user"]["uid"], $args["GET"]["id"]);
 				if($r === true){
